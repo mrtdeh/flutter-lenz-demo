@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'componnents/bottomBar.dart';
 import 'package:testr/routes.dart';
-import 'package:testr/componnents/customcheckInternet.dart';
+// import 'package:testr/componnents/customcheckInternet.dart';
 
 class Starter extends StatefulWidget {
   Starter({Key key}) : super(key: key);
@@ -39,6 +39,26 @@ class _StarterState extends State<Starter> {
     return !await navigator.maybePop();
   }
 
+  void _onTabSelectedNavigator(value) {
+    switch (value) {
+      case 0:
+        widget.navigatorKey.currentState.pushReplacementNamed("/");
+        break;
+      case 1:
+        widget.navigatorKey.currentState.pushReplacementNamed("/search");
+        break;
+      case 2:
+        widget.navigatorKey.currentState.pushReplacementNamed("/account");
+        break;
+      case 3:
+        widget.navigatorKey.currentState.pushReplacementNamed("/sounds");
+        break;
+      case 4:
+        widget.navigatorKey.currentState.pushReplacementNamed("/account");
+        break;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -57,25 +77,7 @@ class _StarterState extends State<Starter> {
         height: 40,
         backgroundColor: Color(0xFF101010),
         selectedColor: Theme.of(context).accentColor,
-        onTabSelected: (value) {
-          switch (value) {
-            case 0:
-              widget.navigatorKey.currentState.pushNamed("/");
-              break;
-            case 1:
-              widget.navigatorKey.currentState.pushNamed("/search");
-              break;
-            case 2:
-              widget.navigatorKey.currentState.pushNamed("/account");
-              break;
-            case 3:
-              widget.navigatorKey.currentState.pushNamed("/sounds");
-              break;
-            case 4:
-              widget.navigatorKey.currentState.pushNamed("/account");
-              break;
-          }
-        },
+        onTabSelected: _onTabSelectedNavigator,
         items: [
           FABBottomAppBarItem(iconData: Icons.home),
           FABBottomAppBarItem(iconData: Icons.search),

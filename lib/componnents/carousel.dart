@@ -1,9 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart';
-
-//import 'package:carousel_slider/carousel_slider.dart';
+import 'package:transparent_image/transparent_image.dart';
 
 class Carousel extends StatefulWidget {
   Carousel({
@@ -19,7 +17,7 @@ class Carousel extends StatefulWidget {
 class _CarouselState extends State<Carousel> {
   int _pageIndex = 0;
   Timer _timer;
-  PageController _pageController = PageController(initialPage: 1);
+  PageController _pageController = PageController(initialPage: 0);
 
   _startTimer() {
     const oneSec = const Duration(seconds: 5);
@@ -75,20 +73,14 @@ class _CarouselState extends State<Carousel> {
             return GestureDetector(
               child: Stack(
                 children: [
-                  CachedNetworkImage(
-                    imageUrl: widget.images[index],
-                    imageBuilder: (context, imageProvider) => Container(
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                          // colorFilter:
-                          //     ColorFilter.mode(Colors.red, BlendMode.colorBurn)
-                        ),
-                      ),
+                  Container(
+                    width: MediaQuery.of(context).size.width,
+                    height: MediaQuery.of(context).size.height,
+                    child: FadeInImage.memoryNetwork(
+                      placeholder: kTransparentImage,
+                      fit: BoxFit.fill,
+                      image: widget.images[index],
                     ),
-                    placeholder: (context, url) => CircularProgressIndicator(),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
                   ),
                   Positioned(
                     width: MediaQuery.of(context).size.width,

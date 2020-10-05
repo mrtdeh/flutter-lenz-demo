@@ -24,9 +24,10 @@ dependencies:
   # flutter_screenutil: ^2.3.0
   # carousel_slider: ^2.2.1
   # connectivity: ^0.4.9+2
+  # cached_network_image: ^2.3.2+1
   fluttertoast: ^7.1.1
   transparent_image: ^1.0.0
-  cached_network_image: ^2.3.2+1
+  pull_to_refresh: ^1.6.1
   flutter:
     sdk: flutter
     
@@ -91,6 +92,8 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - assets/images/cover.jpg
+    - assets/images/img-placeholder.png
+
 
 # flutter_native_splash:
 #   image: assets/images/test.jpeg
